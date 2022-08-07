@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  dashdot:
+    image: 'mauricenino/dashdot:4.3.7'
+    container_name: Dashdot
+    restart: unless-stopped
+    ports:
+      - ${PORT}:3001
+    privileged: true
+    volumes:
+      - /:/mnt/host:ro
+    env_file:
+      - ./.env
+      - ./.env.dashdot
+
+networks:
+    default:
+        external:
+            name: $DEFAULT_NETWORK
+    
