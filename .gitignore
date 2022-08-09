@@ -1,11 +1,11 @@
-#custom
-test*
+### custom ###
+*test*
+*/*/
+*secret*
+*/.env*
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,dotenv
-
-### dotenv ###
-*.env*
 
 ### Linux ###
 *~
