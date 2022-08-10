@@ -1,11 +1,11 @@
-version: "3.1"
+version: '3.1'
 services:
   dashdot:
     image: mauricenino/dashdot:${DASHDOT_VERSION}
     container_name: Dashdot
     restart: unless-stopped
     ports:
-      - ${PORT}:3001
+      - ${DASHDOT_PORT}:3001
     privileged: true
     volumes:
       - /:/mnt/host:ro
@@ -19,12 +19,11 @@ services:
       - DASHDOT_WIDGET_LIST=os,cpu,ram,network
       - DASHDOT_SPEED_TEST_INTERVAL=720
     env_file:
-      - .env.dashdot
       - ../.env.common
-
+      - .env.dashdot
 
 networks:
     default:
         external:
-            name: ${DEFAULT_NETWORK}
+            name: ${DASHDOT_NETWORK}
     
