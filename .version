@@ -1,3 +1,4 @@
 #!/bin/bash
 
 export DASHDOT_VERSION=4.3.7
+export JD2_VERSION=v1.7.1

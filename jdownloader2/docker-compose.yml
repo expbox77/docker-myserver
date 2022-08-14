@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+  jdownloader2:
+    image: jlesage/jdownloader-2:${JD2_VERSION}
+    container_name: JDownloader2
+    restart: always
+    ports:
+      - ${JD2_PORT}:5800    
+    volumes:
+      - ${JD2_CONFIG_V}:/config
+      - ${JD2_DOWN_V}:/output
+      - /etc/localtime:/etc/localtime:ro # optional
+    environment: 
+      - ENABLE_CJK_FONT=1     # optional
+    env_file:
+      - ../.env.common
+      - .env.jdownloader2
+
+networks:
+    default:
+        external:
+            name: ${JD2_NETWORK}
