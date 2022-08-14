@@ -1,4 +1,5 @@
 #!/bin/bash
+# 도커 컴포즈 실행
 
 # 버전 정보 가져오기
 source .version
@@ -13,8 +14,9 @@ if [[ -f "$Secret_File" ]]; then
     source $Secret_File
     
 else
-    echo "$Secret_File file could not be found." 
-    echo "Exit the task. Error Code 101"
+    echo -e "\e[43;31mERROR!\e[0m"
+    echo "\$Secret_File file could not be found." 
+    echo -e "Exit the task. Error Code \e[43;31m101\e[0m"
     exit 101
 fi
 
@@ -38,7 +40,7 @@ done
 echo "##### Finish Network Verification #####"
 echo ""
 
-# 각 폴더명 추출
+# 각 폴더명 추출해서 set_env.sh 선행 실행
 for entry in */
 do
     # .secret에 함수로 지정된 변수 불러오기
@@ -54,7 +56,16 @@ do
         echo "${entry:0:-1}/set_env.sh is UNAVAILABLE"
         echo "Skip ${entry:0:-1}/set_env.sh"
     fi
+done
 
+echo "##### Run Docker-compose ######"
+echo ""
+
+for entry in */
+do
     # 각 폴더에 저장된 docker-compose 실행
     docker-compose -f ./${entry:0:-1}/docker-compose.yml up -d
 done
+
+echo ""
+echo "##### DONE! ######"
