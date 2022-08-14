@@ -3,7 +3,7 @@
 # create .env.dashdot
 
 # 시작 메시지
-echo "##### Start Create DashDot env_file #####"
+echo "##### Start Creating DashDot env_file #####"
 echo "Create new DSM version INFO"
 
 # Synology DSM VERSION 파일 경로
@@ -24,7 +24,7 @@ cat /dev/null > ./dashdot/.env.dashdot
 
 # .env.dashdot에 새로운 내용 삽입
 # 종료 메시지
-echo "The current DSM version is [${dsm_version[0]}-${dsm_version[1]} Update ${dsm_version[2]}]"
+echo -e "The current DSM version is [ \e[41;37m${dsm_version[0]}-${dsm_version[1]} Update ${dsm_version[2]}\e[0m ]"
 echo "DASHDOT_OVERRIDE_OS=Synology DSM ${dsm_version[0]}-${dsm_version[1]} Update ${dsm_version[2]}" >> ./dashdot/.env.dashdot
 echo "##### Finish Creating DashDot env_file #####"
 echo ""
