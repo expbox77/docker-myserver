@@ -44,7 +44,14 @@ echo ""
 for entry in */
 do
     # .secret에 함수로 지정된 변수 불러오기
-    ${entry:0:-1}
+    ${entry:0:-1} 2> /dev/null || func_res=$?
+
+    # source 함수 제대로 있는지 확인하는 과정
+    if [[ "${func_res}" != 200 ]]; then
+        echo "${entry:0:-1} is not found!"
+        echo "Check $Secret_File file"
+        exit 102
+    fi
     
     # set_env.sh 있으면 실행
     if [[ -f "${entry:0:-1}/set_env.sh" ]]; then
