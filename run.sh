@@ -10,12 +10,12 @@ source .network
 # .secret 파일 확인
 Secret_File=.secret
 
-if [[ -f "$Secret_File" ]]; then
-    source $Secret_File
+if [[ -f ~/"$Secret_File" ]]; then
+    source ~/$Secret_File
     
 else
     echo -e "\e[43;31mERROR!\e[0m"
-    echo "\$Secret_File file could not be found." 
+    echo "$Secret_File file could not be found." 
     echo -e "Exit the task. Error Code \e[43;31m101\e[0m"
     exit 101
 fi
