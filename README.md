@@ -1,5 +1,7 @@
-# expbox_docker-compose
+# Docker-MyServer
 For My x86 CPU Synology NAS
+
+테스트 환경: DS1821+
 
 해야할거: 쉘 스크립트에 에러 발생 시 실행되는 스크립트로 변경할 것
 
