@@ -1,5 +1,5 @@
 # expbox_docker-compose
-for my synology server
+For My x86 CPU Synology NAS
 
 해야할거: 쉘 스크립트에 에러 발생 시 실행되는 스크립트로 변경할 것
 
