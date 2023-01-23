@@ -1,5 +1,4 @@
-Docker-MyServer
-=================
+# Docker-MyServer
 
 For My x86 CPU Synology NAS
 
@@ -8,18 +7,20 @@ For My x86 CPU Synology NAS
 사용 환경: DS1821+
 
 
-목표
------------------
+## 목표
+
 - docker-compose.yml 백업
 
-
-완료 목록
------------------
-- ~~리뉴얼중~~
+- ~~쉘 스크립트에 에러 발생 시 실행되는 스크립트로 변경할 것~~
 
 -----------------
 
-~~해야할거: 쉘 스크립트에 에러 발생 시 실행되는 스크립트로 변경할 것~~
+
+## 사용방법
+
+```
+docker-compose -f [docker-compose.yml 파일 위치] up -d
+```
 
 ~~chmod 744 *.sh 로 퍼미션 줄 것.~~
 

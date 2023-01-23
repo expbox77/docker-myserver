@@ -1,30 +1,23 @@
 #!/bin/bash
-# check Synology DSM version
-# create .env.dashdot
+# Check Synology DSM version
+# Create .env
+
+SAVE_DIR='./env/dashdot.env'
 
 # 시작 메시지
-echo "##### Start Creating DashDot env_file #####"
-echo "Create new DSM version INFO"
+echo -e "##### Start Creating DashDot env_file #####"
+echo -e "Create new DSM version INFO"
 
 # Synology DSM VERSION 파일 경로
-VERSION_FILE=/etc.defaults/VERSION
+source /etc.defaults/VERSION
 
-# 필요한 정보
-version="productversion"
-build="buildnumber"
-update="smallfixnumber"
+# dashdot.env 내용 삭제
+echo -e "Delete previous dashdot.env content"
+cat /dev/null > $SAVE_DIR
 
-# 정보 뽑아내기
-dsm_version=($(grep "$version\|$build\|$update" $VERSION_FILE | cut -f 2 -d '"'))
+# dashdot.env에 새로운 내용 삽입
+echo -e "The current DSM version is [ \e[41;37m${productversion}-${buildnumber} Update ${smallfixnumber}\e[0m ]"
+echo -e "DASHDOT_OVERRIDE_OS=Synology DSM ${productversion}-${buildnumber} Update ${smallfixnumber}" >> $SAVE_DIR
 
-# .env.dashdot 내용 삭제
-echo "Delete previous .env.dashdot content"
-cat /dev/null > ./dashdot/.env.dashdot
-
-
-# .env.dashdot에 새로운 내용 삽입
 # 종료 메시지
-echo -e "The current DSM version is [ \e[41;37m${dsm_version[0]}-${dsm_version[1]} Update ${dsm_version[2]}\e[0m ]"
-echo "DASHDOT_OVERRIDE_OS=Synology DSM ${dsm_version[0]}-${dsm_version[1]} Update ${dsm_version[2]}" >> ./dashdot/.env.dashdot
-echo "##### Finish Creating DashDot env_file #####"
-echo ""
+echo -e "##### Finish Creating DashDot env_file #####"
