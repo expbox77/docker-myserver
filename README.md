@@ -19,7 +19,7 @@ For My x86 CPU Synology NAS
 ## 사용방법
 
 ```
-docker-compose -f [docker-compose.yml 파일 위치] up -d
+./run.sh
 ```
 
 ~~chmod 744 *.sh 로 퍼미션 줄 것.~~
